@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:21:34 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/03 20:48:36 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/01/03 21:54:12 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void    sab(t_list **stack)
 
 void    ss(t_list **stacka, t_list**stackb)
 {
-    sa(stacka);
-    sa(stackb);
+    sab(stacka);
+    sab(stackb);
 }
 
 void    pab(t_list **stack1, t_list **stack2)
@@ -52,4 +52,26 @@ void    rab(t_list **stack)
     (ft_lslast(*stack))->next = *stack;
     *stack->next = NULL;
     **stack = &tmp;
+}
+
+void    rr(t_list **stacka, t_list **stackb)
+{
+    rab(stacka);
+    rab(stackb);
+}
+
+void    rrab(t_list **stack)
+{
+    t_list *tmp;
+
+    tmp = *stack;
+    **stack = (ft_last(*stack));
+    (prev_node(tmp, *stack))->next = NULL;
+    *stack->next = &tmp;
+}
+
+void    rrr(t_list **stacka, t_list **stackb)
+{
+    rrab(**stacka);
+    rrab(**stackb);
 }
