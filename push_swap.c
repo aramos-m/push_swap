@@ -5,73 +5,106 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 21:21:34 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/03 21:54:12 by aramos-m         ###   ########.fr       */
+/*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
+/*   Updated: 2025/01/12 23:30:16 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void qsort (void* base, size_t num, size_t size, 
-           int (*comparator)(const void*,const void*));
+#include "libft/libft.h"
 
-int comparador (const void* p1 , const void* p2 ); 
-/*Elements to be compared (stack a and b).
-Return values:
-- (<0): the element pointed by p1 goes before the element pointed by p2
-- (0): */
-
-void    sab(t_list **stack)
+/* Crear el stack y rellenarlo*/
+t_list	*fill_stack(int argc, char **argv)
 {
-    t_list  *tmp;
+	int		*value;
+	int		i;
+	t_list	*head;
 
-    tmp = *stack->next;
-    *stack->next = *stack->next->next;
-    tmp->next = *stack;
-    **stack = &tmp;
+	value = malloc(sizeof(int));
+	if (!value)
+		return (NULL);
+	*value = ft_atoi(argv[1]);
+	head = ft_lstnew(value);
+	if (!head)
+	{
+		free(value);
+		return (NULL);
+	}
+
+	i = 2;
+	while (argv[i])
+	{
+		value = malloc(sizeof(int));
+		if (!value)
+		{
+			ft_lstclear(&head, free);
+			return (NULL);
+		}
+		*value = ft_atoi(argv[i]);
+		ft_lstadd_back(&head, ft_lstnew(value));
+		i++;
+	}
+	return (head);
 }
 
-void    ss(t_list **stacka, t_list**stackb)
+/*Excepción: stack de 3 números*/
+void	sort_stack_three(t_list *head)
 {
-    sab(stacka);
-    sab(stackb);
+	if (head->content < head->next->content)
+	{
+		if (head->content < ft_last(head)) // Caso: 1 3 2
+		{
+			rab(head);
+			sab(head);
+			rrab(head);
+		}
+		else // Caso: 2 3 1
+			rrab(head);
+	}
+	else
+	{
+		if (head->content > ft_last(head)) // Caso: 2 1 3
+			sab(head);
+		else
+		{
+			if (head->content->next < ft_last(head)) // Caso: 3 1 2
+				rab(head);
+			else // Caso: 3 2 1
+				rrab(head);
+		}
+	}
 }
 
-void    pab(t_list **stack1, t_list **stack2)
+void	move_minor(t_list *stacka)
 {
-    t_list *tmp;
-    
-    tmp = *stack2->next;
-    *stack2->next = *stack1;
-    stack2 = tmp;
+	int	minor;
+	int	pos;
+	int	i;
+
+	i = 0;
+	minor = stacka->content;
+	while (stacka->next)
+	{
+		if (stacka->content < minor)
+		{
+			minor = stacka->content;
+			pos = i;
+		}
+		stacka = stacka->next;
+		i++;
+	}
+	if (pos == 2)
+		rab(stacka);
+	if (pos == 2 || pos == 1)
+		rab(stacka);
+	if (pos == 3)
+		rrab(stacka);
+	if (pos == 3 || pos == 4)
+		rrab(stacka);
+	sab(stacka);
+	return (stacka);
 }
 
-void    rab(t_list **stack)
-{
-    t_list *tmp;
+/*Excepción: stack de 3 números*/
 
-    tmp = *stack->next;
-    (ft_lslast(*stack))->next = *stack;
-    *stack->next = NULL;
-    **stack = &tmp;
-}
-
-void    rr(t_list **stacka, t_list **stackb)
-{
-    rab(stacka);
-    rab(stackb);
-}
-
-void    rrab(t_list **stack)
-{
-    t_list *tmp;
-
-    tmp = *stack;
-    **stack = (ft_last(*stack));
-    (prev_node(tmp, *stack))->next = NULL;
-    *stack->next = &tmp;
-}
-
-void    rrr(t_list **stacka, t_list **stackb)
-{
-    rrab(**stacka);
-    rrab(**stackb);
-}
+// Deshaceme de dos números para utilizar sort_stack_three
+// Ordenar los tres números restantes con 'sort_stack_three' 
