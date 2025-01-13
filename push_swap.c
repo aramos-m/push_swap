@@ -6,13 +6,13 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/12 23:30:16 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:37:47 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "push_swap.h"
 
-/* Crear el stack y rellenarlo*/
+/*Crear el stack y rellenarlo*/
 t_list	*fill_stack(int argc, char **argv)
 {
 	int		*value;
@@ -53,34 +53,33 @@ void	sort_stack_three(t_list *head)
 	{
 		if (head->content < ft_last(head)) // Caso: 1 3 2
 		{
-			rab(head);
-			sab(head);
-			rrab(head);
+			rab(head, 'a');
+			sab(head, 'a');
+			rrab(head, 'a');
 		}
 		else // Caso: 2 3 1
-			rrab(head);
+			rrab(head, 'a');
 	}
 	else
 	{
 		if (head->content > ft_last(head)) // Caso: 2 1 3
-			sab(head);
+			sab(head, 'a');
 		else
 		{
-			if (head->content->next < ft_last(head)) // Caso: 3 1 2
-				rab(head);
+			if (head->next->content < ft_lstlast(head)) // Caso: 3 1 2
+				rab(head, 'a');
 			else // Caso: 3 2 1
-				rrab(head);
+				rrab(head, 'a');
 		}
 	}
 }
 
-void	move_minor(t_list *stacka)
+/*Ahorrar líneas iterador*/
+void	move_minor(t_list *stacka, t_list *stackb, int i)
 {
 	int	minor;
 	int	pos;
-	int	i;
 
-	i = 0;
 	minor = stacka->content;
 	while (stacka->next)
 	{
@@ -93,18 +92,24 @@ void	move_minor(t_list *stacka)
 		i++;
 	}
 	if (pos == 2)
-		rab(stacka);
+		rab(stacka, 'a');
 	if (pos == 2 || pos == 1)
-		rab(stacka);
+		rab(stacka, 'a');
 	if (pos == 3)
-		rrab(stacka);
+		rrab(stacka, 'a');
 	if (pos == 3 || pos == 4)
-		rrab(stacka);
-	sab(stacka);
+		rrab(stacka, 'a');
+	pab(stackb, stacka, 'b');
 	return (stacka);
 }
 
 /*Excepción: stack de 3 números*/
-
-// Deshaceme de dos números para utilizar sort_stack_three
-// Ordenar los tres números restantes con 'sort_stack_three' 
+void	sort_stack_five(t_list *stacka, t_list *stackb)
+{
+	move_minor(stacka, stackb, 0);
+	move_minor(stacka, stackb, 0);
+	sort_stack_three(stacka);
+	pab(stacka, stackb, 'a');
+	pab(stacka, stackb, 'a');
+	return (stacka);
+}
