@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:20:53 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/13 21:35:15 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/01/14 22:44:11 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	rrab(t_list **stack, char ab)
 	t_list	*tmp;
 
 	tmp = *stack;
-	*stack = ft_last(*stack);
+	*stack = ft_lstlast(*stack);
 	(prev_node(tmp, *stack))->next = NULL;
-	(*stack)->next = &tmp;
+	(*stack)->next = tmp;
 	if (ab != 'c')
 		ft_printf("rr%c\n", ab);
 }

@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 20:07:39 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/13 21:34:51 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/01/14 21:15:44 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
 /*PUSH_SWAP FUNCTION*/
 t_list	*fill_stack(int argc, char **argv);
 void	sort_stack_three(t_list *head);
-void	move_minor(t_list *stacka, int i);
+void	move_minor(t_list **stacka, t_list **stackb, int i);
 void	sort_stack_five(t_list *stacka, t_list *stackb);
 
 /*PUSH_SWAP_MOVES*/

@@ -7,7 +7,7 @@ BONUS_SRCS	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lst
 OBJS		= $(SRCS:.c=.o)
 BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
 
-CC		= gcc
+CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -g3
 AR		= ar rcs
 RM		= rm -f
