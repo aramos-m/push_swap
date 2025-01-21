@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 20:07:39 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/14 21:15:44 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/01/21 21:49:21 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 /*PUSH_SWAP FUNCTION*/
 t_list	*fill_stack(int argc, char **argv);
-void	sort_stack_three(t_list *head);
+void	sort_three(t_list *head);
 void	move_minor(t_list **stacka, t_list **stackb, int i);
-void	sort_stack_five(t_list *stacka, t_list *stackb);
+void	sort_to_five(t_list *stacka, t_list *stackb);
 
 /*PUSH_SWAP_MOVES*/
 void	sab(t_list **stack, char ab);
