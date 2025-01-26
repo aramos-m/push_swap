@@ -6,13 +6,13 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/21 21:48:52 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:07:47 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*Crear el stack y rellenarlo*/
+// Crear el stack y rellenarlo
 t_list	*fill_stack(int argc, char **argv)
 {
 	int		*value;
@@ -46,7 +46,7 @@ t_list	*fill_stack(int argc, char **argv)
 	return (head);
 }
 
-/*Excepción: stack de 3 números*/
+// Excepción: stack de 3 números
 void	sort_three(t_list *head)
 {
 	if (*(int*)head->content < *(int*)head->next->content)
@@ -76,15 +76,14 @@ void	sort_three(t_list *head)
 	}
 }
 
-/*Ahorrar líneas iterador*/
-void	move_minor(t_list **stacka, t_list **stackb, int i)
+void	move_minor(t_list **stacka, t_list **stackb, int i) // Ahorrar líneas iterador
 {
 	int	minor;
 	int	pos;
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = *stacka;
-	minor = *(int *)(*stacka)->content; // No se puede desreferenciar un void *
+	minor = *(int *)(*stacka)->content; // No se puede desreferenciar un void *	
 	while ((*stacka)->next)
 	{
 		if (*(int *)(*stacka)->content < minor)
@@ -107,7 +106,7 @@ void	move_minor(t_list **stacka, t_list **stackb, int i)
 	pab(stackb, stacka, 'b');
 }
 
-/*Excepción: stack de 3 números*/
+// Excepción: stack de 3 números
 void	sort_to_five(t_list *stacka, t_list *stackb)
 {
 	stackb = 0;

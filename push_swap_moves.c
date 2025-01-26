@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:21:34 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/21 20:17:29 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:04:12 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ss(t_list **stacka, t_list**stackb)
 	ft_printf("ss\n");
 }
 
-// Corregir el próximo día
 void	pab(t_list **stack1, t_list **stack2, char ab)
 {
 	t_list	*tmp;
@@ -43,7 +42,6 @@ void	pab(t_list **stack1, t_list **stack2, char ab)
 	ft_printf("p%c\n", ab);
 }
 
-// Corregir el próximo día
 void	rab(t_list **stack, char ab)
 {
 	t_list	*tmp;
