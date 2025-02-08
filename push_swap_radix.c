@@ -6,11 +6,11 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:14:51 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/26 22:31:42 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:22:43 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "push_swap.h"
 
 // Crea una nueva lista con la posición de cada valor de la lista original
 t_list  *sort_more_five(t_list *num)
@@ -21,17 +21,17 @@ t_list  *sort_more_five(t_list *num)
     int     *i;
 
     fixed = num;
-    iter = num;
     i = malloc(sizeof(int));
     new_lst = ft_lstnew(i);
 
     while(fixed)
     {
         *i = 0;
+        iter = num;
         while (iter)
         {
-            if (fixed->content > iter->content)
-                *i++;
+            if (*((int *)(fixed->content)) > *((int *)(iter->content)))
+                *i = *i + 1;
             iter = iter->next;
         }
         fixed = fixed->next;
@@ -40,11 +40,3 @@ t_list  *sort_more_five(t_list *num)
     }
     return (new_lst);
 }
-
-// Crear myArr con números desordenados
-// Crear radixArr[10] de arrays vacío
-// Recorrer el arr y ordenar los números en radixArr eg "12 50 34" / arr[0] = 12, arr[1] = 34, arr[2] = 50
-// Recorrer cada x de myArr y buscar en las unidades
-// Mover x de myArr al índice de radixArr que corresponda e.g. 431 = arr[1]
-// Mover de nuevo cada x a myArr empezando desde radixArr[9]
-// Repetir el proceso anterior con las decenas, centenas ...

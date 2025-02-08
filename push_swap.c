@@ -116,16 +116,3 @@ void	sort_to_five(t_list *stacka, t_list *stackb)
 	while (ft_lstsize(stackb))	
 		pab(&stacka, &stackb, 'a');
 }
-
-int main(int argc, char **argv)
-{
-	t_list *a;
-	t_list *b;
-	char **arg2;
-
-	//argc = 4;
-	//arg2 = ft_split("ana,2,23,6", ',');
-	a = fill_stack(argc, argv);
-	if (argc < 7)
-		sort_to_five(a, b);
-}
