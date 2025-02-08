@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:21:34 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/26 13:04:12 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/09 00:22:37 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ void	pab(t_list **stack1, t_list **stack2, char ab)
 {
 	t_list	*tmp;
 
-	tmp = (*stack2)->next;
-	(*stack2)->next = *stack1;
-	*stack1 = *stack2;
-	*stack2 = tmp;
+	tmp = (*stack1)->next;
+	if (*stack2)
+		(*stack1)->next = *stack2;
+	else
+		(*stack1)->next = NULL;
+	*stack2 = *stack1;
+	*stack1 = tmp;
 	ft_printf("p%c\n", ab);
 }
 

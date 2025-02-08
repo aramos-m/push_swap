@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:14:51 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/08 22:22:43 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/09 00:26:27 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list  *sort_more_five(t_list *num)
     i = malloc(sizeof(int));
     new_lst = ft_lstnew(i);
 
-    while(fixed)
+    while (fixed)
     {
         *i = 0;
         iter = num;
@@ -39,4 +39,34 @@ t_list  *sort_more_five(t_list *num)
         ft_lstadd_back(&new_lst, ft_lstnew(i));
     }
     return (new_lst);
+}
+
+// Comprobar cada cifra con su equivalencia en binario para separarlo en dos stacks 0 y 1
+t_list *radix(t_list *a, t_list *b, int argc)
+{
+    int index;
+    int count;
+
+    index = 0;
+    while (!check_sort(a))
+    {
+        count = 0;
+        while (count < (argc - 1)) // Esto no sería válido si introducen como argumento una cadena
+        {
+            printf("Valor de  a: %d\n", (*(int *)(a->content)));
+            if ((*(int *)(a->content)) & (1 << index))
+            {
+                rab(&a, 'a');
+            }
+            else
+                pab(&a, &b, 'b');
+            count++;
+        }
+        while (b)
+        {
+            printf("%d %p\n", *(int *)b->content, b->next);
+            pab(&b, &a, 'a');
+        }
+        index++;
+    }
 }

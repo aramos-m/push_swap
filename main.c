@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/08 21:55:02 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/09 00:30:46 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int main(int argc, char **argv)
 	t_list *b;
 	//char **arg2;
 
+    a = 0;
+    b = 0;
 	//argc = 4;
 	//arg2 = ft_split("ana,2,23,6", ',');
 	a = fill_stack(argc, argv);
@@ -26,10 +28,6 @@ int main(int argc, char **argv)
     else
     {
         a = sort_more_five(a);
-        while(a)
-        {
-            printf("%d", *((int *)(a->content)));
-            a = a->next;
-        }
+        radix(a, b, argc);
     }
 }
