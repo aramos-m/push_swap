@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:14:51 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/09 00:26:27 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:34:50 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ t_list  *sort_more_five(t_list *num)
                 *i = *i + 1;
             iter = iter->next;
         }
+        if (!fixed->next)
+            ft_lstlast(new_lst)->next = NULL;
+        else
+        {
+            i = malloc(sizeof(int));
+            ft_lstadd_back(&new_lst, ft_lstnew(i));
+        }
         fixed = fixed->next;
-        i = malloc(sizeof(int));
-        ft_lstadd_back(&new_lst, ft_lstnew(i));
     }
     return (new_lst);
 }
@@ -51,22 +56,16 @@ t_list *radix(t_list *a, t_list *b, int argc)
     while (!check_sort(a))
     {
         count = 0;
-        while (count < (argc - 1)) // Esto no sería válido si introducen como argumento una cadena
+        while (count <= (argc - 1)) // Esto no sería válido si introducen como argumento una cadena
         {
-            printf("Valor de  a: %d\n", (*(int *)(a->content)));
             if ((*(int *)(a->content)) & (1 << index))
-            {
                 rab(&a, 'a');
-            }
             else
                 pab(&a, &b, 'b');
             count++;
         }
         while (b)
-        {
-            printf("%d %p\n", *(int *)b->content, b->next);
             pab(&b, &a, 'a');
-        }
         index++;
     }
 }

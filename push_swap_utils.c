@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:20:53 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/08 23:52:26 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:35:20 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ t_list	*prev_node(t_list *head, t_list *node)
 
 int	check_sort(t_list *a)
 {
-	while (a)
+	while (a->next) // Para que no compruebe el a->next del último
 	{
-		printf("checksort\n");
 		if ((*(int *)(a->content)) > (*(int *)(a->next->content)))
 			return (0); // Not sorted
 		a = a->next;
