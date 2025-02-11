@@ -6,14 +6,14 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/01/26 13:07:47 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:25:18 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Crear el stack y rellenarlo
-t_list	*fill_stack(int argc, char **argv)
+t_list	*fill_stack(char **argv)
 {
 	int		*value;
 	int		i;
