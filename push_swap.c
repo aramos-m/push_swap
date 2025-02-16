@@ -6,11 +6,27 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/11 21:25:18 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:46:06 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	num_len(int num)
+{
+	int	count;
+
+	count = 0;
+
+	if (num < 0)
+		count = 1;
+	while (num)
+	{
+		num = num / 10;
+		count ++;
+	}
+	return (count);
+}
 
 // Crear el stack y rellenarlo
 t_list	*fill_stack(char **argv)
@@ -19,18 +35,7 @@ t_list	*fill_stack(char **argv)
 	int		i;
 	t_list	*head;
 
-	value = malloc(sizeof(int));
-	if (!value)
-		return (NULL);
-	*value = ft_atoi(argv[1]);
-	head = ft_lstnew(value);
-	if (!head)
-	{
-		free(value);
-		return (NULL);
-	}
-
-	i = 2;
+	i = 0;
 	while (argv[i])
 	{
 		value = malloc(sizeof(int));
@@ -40,7 +45,12 @@ t_list	*fill_stack(char **argv)
 			return (NULL);
 		}
 		*value = ft_atoi(argv[i]);
-		ft_lstadd_back(&head, ft_lstnew(value));
+		if (ft_strlen(argv[i]) != num_len(*value))
+			return (NULL);
+		if (i == 0)
+			head = ft_lstnew(value);
+		else
+			ft_lstadd_back(&head, ft_lstnew(value));
 		i++;
 	}
 	return (head);
@@ -48,7 +58,7 @@ t_list	*fill_stack(char **argv)
 
 // Excepción: stack de 3 números
 void	sort_three(t_list *head)
-{
+{	
 	if (*(int*)head->content < *(int*)head->next->content)
 	{
 		if (*(int*)head->content < *(int*)ft_lstlast(head)->content) // Caso: 1 3 2
@@ -61,7 +71,7 @@ void	sort_three(t_list *head)
 	}
 	else
 	{
-		if (*(int*)head->content < *(int*)ft_lstlast(head)->content) // Caso: 2 1 3
+		if (*(int*)head->content < *(int*)ft_lstlast(head)->content || (ft_lstsize(head) < 3)) // Caso: 2 1 3
 			sab(&head, 'a');
 		else
 		{
@@ -109,6 +119,8 @@ void	move_minor(t_list **stacka, t_list **stackb, int i) // Ahorrar líneas iter
 // Excepción: stack de 3 números
 void	sort_to_five(t_list *stacka, t_list *stackb)
 {
+	if (check_sort(stacka) == 1)
+		return ;
 	stackb = 0;
 	while (ft_lstsize(stacka) > 3)
 		move_minor(&stacka, &stackb, 0);

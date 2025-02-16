@@ -6,44 +6,42 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/11 21:18:32 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:49:02 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	num_len(int num)
+int check_error(void)
 {
-	int	count;
-
-	count = 0;
-
-	if (num < 0)
-		count = 1;
-	while (num)
-	{
-		num = num / 10;
-		count ++;
-	}
-	return (count);
+	ft_printf("Error\n");
+	return (0);
 }
 
 int main(int argc, char **argv)
 {
 	t_list *a;
 	t_list *b;
+	t_list *tmp;
 	int		i;
 	char	**argv2;
 
-    b = 0;
+	a = NULL;
+    b = NULL;
 	i = 1;
+
+	if (argc == 1)
+		return(check_error());
 	while (argv[i])
 	{
-		argv2 = ft_split(&argv[i], ' '); 
+		argv2 = ft_split(argv[i], ' '); 
+		tmp = fill_stack(argv2);
+		if (!tmp)
+			return (check_error());
 		if (!a)
-			a = fill_stack(argv2);
+			a = tmp;
 		else
-			ft_lstlast(a)->next = fill_stack(argv2);
+			ft_lstlast(a)->next = tmp;
 		i++; // racanear líneas: &argv[i++]
 	}
 	if (argc < 7)

@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 20:07:39 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/08 23:41:03 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/16 19:48:22 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ft_printf/ft_printf.h"
 
 // PUSH_SWAP FUNCTION
-t_list	*fill_stack(int argc, char **argv);
+t_list	*fill_stack(char **argv);
 void	sort_three(t_list *head);
 void	move_minor(t_list **stacka, t_list **stackb, int i);
 void	sort_to_five(t_list *stacka, t_list *stackb);
