@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 18:51:16 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:54:43 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void	move_minor(t_list **stacka, t_list **stackb, int i) // Ahorrar líneas iter
 
 	tmp = *stacka;
 	minor = *(int *)(*stacka)->content; // No se puede desreferenciar un void *	
-	while ((*stacka)->next)
+	pos = 0;
+	while ((*stacka))
 	{
 		if (*(int *)(*stacka)->content < minor)
 		{
@@ -111,7 +112,7 @@ void	move_minor(t_list **stacka, t_list **stackb, int i) // Ahorrar líneas iter
 		rab(stacka, 'a');
 	if (pos == 3)
 		rrab(stacka, 'a');
-	if (pos == 3 || pos == 4)
+	if (ft_lstsize(*stacka) > 4 && (pos == 3 || pos == 4))
 		rrab(stacka, 'a');
 	pab(stackb, stacka, 'b');
 }
@@ -124,7 +125,8 @@ void	sort_to_five(t_list *stacka, t_list *stackb)
 	stackb = 0;
 	while (ft_lstsize(stacka) > 3)
 		move_minor(&stacka, &stackb, 0);
-	sort_three(stacka);
+	if (check_sort(stacka) == 0)
+		sort_three(stacka);
 	while (ft_lstsize(stackb))	
 		pab(&stacka, &stackb, 'a');
 }

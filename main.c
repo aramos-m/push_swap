@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 20:53:08 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/23 22:14:16 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 int check_error(void)
 {
 	ft_printf("Error\n");
+	return (0);
+}
+
+int check_duplicate(t_list *stack)
+{
+	t_list	*iter;
+	
+	while (stack)
+	{
+		iter = stack->next;
+		while(iter)
+		{
+			if (*(int *)(iter)->content == *(int *)(stack)->content)
+				return (1);
+			iter = iter->next;
+		}
+		stack = stack->next;
+	}
 	return (0);
 }
 
@@ -44,6 +62,8 @@ int main(int argc, char **argv)
 			ft_lstlast(a)->next = tmp;
 		i++; // racanear líneas: &argv[i++]
 	}
+	if (check_duplicate(a))
+		return(check_error());
 	if (ft_lstsize(a) < 6)
 		sort_to_five(a, b);
     else
