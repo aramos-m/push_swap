@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 20:07:39 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/16 19:48:22 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/23 18:51:12 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	sort_three(t_list *head);
 void	move_minor(t_list **stacka, t_list **stackb, int i);
 void	sort_to_five(t_list *stacka, t_list *stackb);
 t_list  *sort_more_five(t_list *num);
-t_list  *radix(t_list *a, t_list *b, int argc);
+void    radix(t_list *a, t_list *b, int argc);
 
 // PUSH_SWAP_MOVES
 void	sab(t_list **stack, char ab);
