@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:14:51 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 20:25:31 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/02/23 20:53:00 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_list  *sort_more_five(t_list *num)
 }
 
 // Comprobar cada cifra con su equivalencia en binario para separarlo en dos stacks 0 y 1
-void    radix(t_list *a, t_list *b, int argc)
+void    radix(t_list *a, t_list *b, int size)
 {
     int index;
     int count;
@@ -55,7 +55,7 @@ void    radix(t_list *a, t_list *b, int argc)
     while (!check_sort(a))
     {
         count = 1;
-        while (count <= (argc - 1)) // Esto no sería válido si introducen como argumento una cadena
+        while (count <= size) // Esto no sería válido si introducen como argumento una cadena
         {
             if ((*(int *)(a->content)) & (1 << index))
                 rab(&a, 'a');
