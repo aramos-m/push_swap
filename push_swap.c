@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 21:54:43 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/02 19:55:11 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_list	*fill_stack(char **argv)
 	t_list	*head;
 
 	i = 0;
+	head = 0;
 	while (argv[i])
 	{
 		value = malloc(sizeof(int));

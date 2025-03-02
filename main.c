@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 22:14:16 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/02 19:57:35 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int check_error(void)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	return (0);
 }
 

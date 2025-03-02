@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:14:51 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 21:16:15 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/02 19:55:42 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void    radix(t_list *a, t_list *b, int size)
     while (!check_sort(a))
     {
         count = 1;
-        while (count <= size) // Esto no sería válido si introducen como argumento una cadena
+        while (count <= size)
         {
             if ((*(int *)(a->content)) & (1 << index))
                 rab(&a, 'a');
