@@ -6,18 +6,18 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/02 19:55:11 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:22:46 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#define LSTLAST ft_lstlast 
 
 int	num_len(int num)
 {
 	int	count;
 
 	count = 0;
-
 	if (num < 0)
 		count = 1;
 	while (num)
@@ -58,30 +58,30 @@ t_list	*fill_stack(char **argv)
 }
 
 // Excepción: stack de 3 números
-void	sort_three(t_list *head)
-{	
-	if (*(int*)head->content < *(int*)head->next->content)
+void	sort_three(t_list *h)
+{
+	if (*(int *)h->content < *(int *)h->next->content)
 	{
-		if (*(int*)head->content < *(int*)ft_lstlast(head)->content) // Caso: 1 3 2
+		if (*(int *)h->content < *(int *)LSTLAST(h)->content)
 		{
-			sab(&head, 'a');
-			rab(&head, 'a');
+			sab(&h, 'a');
+			rab(&h, 'a');
 		}
-		else // Caso: 2 3 1
-			rrab(&head, 'a');
+		else
+			rrab(&h, 'a');
 	}
 	else
 	{
-		if (*(int*)head->content < *(int*)ft_lstlast(head)->content || (ft_lstsize(head) < 3)) // Caso: 2 1 3
-			sab(&head, 'a');
+		if (*(int *)h->content < *(int *)LSTLAST(h)->content || (ft_lstsize(h) < 3))
+			sab(&h, 'a');
 		else
 		{
-			if (*(int*)head->next->content < *(int*)ft_lstlast(head)->content) // Caso: 3 1 2
-				rab(&head, 'a');
-			else // Caso: 3 2 1
+			if (*(int *)h->next->content < *(int *)LSTLAST(h)->content)
+				rab(&h, 'a');
+			else
 			{
-				sab(&head, 'a');
-				rrab(&head, 'a');
+				sab(&h, 'a');
+				rrab(&h, 'a');
 			}
 		}
 	}
@@ -89,8 +89,8 @@ void	sort_three(t_list *head)
 
 void	move_minor(t_list **stacka, t_list **stackb, int i) // Ahorrar líneas iterador
 {
-	int	minor;
-	int	pos;
+	int		minor;
+	int		pos;
 	t_list	*tmp;
 
 	tmp = *stacka;
@@ -128,6 +128,6 @@ void	sort_to_five(t_list *stacka, t_list *stackb)
 		move_minor(&stacka, &stackb, 0);
 	if (check_sort(stacka) == 0)
 		sort_three(stacka);
-	while (ft_lstsize(stackb))	
+	while (ft_lstsize(stackb))
 		pab(&stacka, &stackb, 'a');
 }
