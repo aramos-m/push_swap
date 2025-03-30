@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:21:34 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 20:26:45 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:51:48 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sab(t_list **stack, char ab)
 void	ss(t_list **stacka, t_list**stackb)
 {
 	sab(stacka, 'c');
-	sab(stackb, 'c'); 
+	sab(stackb, 'c');
 	ft_printf("ss\n");
 }
 
@@ -43,8 +43,7 @@ void	pab(t_list **dst, t_list **src, char ab)
 	*dst = *src;
 	*src = tmp;
 	ft_printf("p%c\n", ab);
-} 
-
+}
 
 void	rab(t_list **stack, char ab)
 {

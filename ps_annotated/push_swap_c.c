@@ -6,18 +6,19 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/30 21:47:58 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:22:46 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#define LSTLAST ft_lstlast 
 
 int	num_len(int num)
 {
 	int	count;
 
 	count = 0;
-	if (num <= 0)
+	if (num < 0)
 		count = 1;
 	while (num)
 	{
@@ -27,70 +28,74 @@ int	num_len(int num)
 	return (count);
 }
 
-t_list	*fill_stack(char **arg)
+// Crear el stack y rellenarlo
+t_list	*fill_stack(char **argv)
 {
-	int		*val;
+	int		*value;
 	int		i;
 	t_list	*head;
 
 	i = 0;
 	head = 0;
-	while (arg[i])
+	while (argv[i])
 	{
-		val = malloc(sizeof(int));
-		if (!val)
+		value = malloc(sizeof(int));
+		if (!value)
 		{
 			ft_lstclear(&head, free);
 			return (NULL);
 		}
-		*val = ft_atoi(arg[i]);
-		if ((ft_strlen(arg[i]) != num_len(*val)) || ft_isdigit(arg[i][0]) == 0)
+		*value = ft_atoi(argv[i]);
+		if (ft_strlen(argv[i]) != num_len(*value))
 			return (NULL);
 		if (i == 0)
-			head = ft_lstnew(val);
+			head = ft_lstnew(value);
 		else
-			ft_lstadd_back(&head, ft_lstnew(val));
+			ft_lstadd_back(&head, ft_lstnew(value));
 		i++;
 	}
 	return (head);
 }
 
-void	sort_three(t_list **h)
+// Excepción: stack de 3 números
+void	sort_three(t_list *h)
 {
-	if (*(int *)(*h)->content < *(int *)(*h)->next->content)
+	if (*(int *)h->content < *(int *)h->next->content)
 	{
-		if (*(int *)(*h)->content < *(int *)ft_lstlast(*h)->content)
+		if (*(int *)h->content < *(int *)LSTLAST(h)->content)
 		{
-			sab(h, 'a');
-			rab(h, 'a');
+			sab(&h, 'a');
+			rab(&h, 'a');
 		}
 		else
-			rrab(h, 'a');
+			rrab(&h, 'a');
 	}
 	else
 	{
-		if (*(int *)(*h)->content < *(int *)ft_lstlast(*h)->content)
-			sab(h, 'a');
+		if (*(int *)h->content < *(int *)LSTLAST(h)->content || (ft_lstsize(h) < 3))
+			sab(&h, 'a');
 		else
 		{
-			if (*(int *)(*h)->next->content < *(int *)ft_lstlast(*h)->content)
-				rab(h, 'a');
+			if (*(int *)h->next->content < *(int *)LSTLAST(h)->content)
+				rab(&h, 'a');
 			else
 			{
-				sab(h, 'a');
-				rrab(h, 'a');
+				sab(&h, 'a');
+				rrab(&h, 'a');
 			}
 		}
 	}
 }
 
-void	move_minor(t_list **stacka, t_list **stackb, int i, int pos)
+void	move_minor(t_list **stacka, t_list **stackb, int i) // Ahorrar líneas iterador
 {
 	int		minor;
+	int		pos;
 	t_list	*tmp;
 
 	tmp = *stacka;
-	minor = *(int *)(*stacka)->content;
+	minor = *(int *)(*stacka)->content; // No se puede desreferenciar un void *	
+	pos = 0;
 	while ((*stacka))
 	{
 		if (*(int *)(*stacka)->content < minor)
@@ -113,21 +118,16 @@ void	move_minor(t_list **stacka, t_list **stackb, int i, int pos)
 	pab(stackb, stacka, 'b');
 }
 
+// Excepción: stack de 3 números
 void	sort_to_five(t_list *stacka, t_list *stackb)
 {
 	if (check_sort(stacka) == 1)
 		return ;
 	stackb = 0;
-	if (ft_lstsize(stacka) == 2)
-	{
-		sab(&stacka, 'a');
-		return ;
-	}
 	while (ft_lstsize(stacka) > 3)
-		move_minor(&stacka, &stackb, 0, 0);
+		move_minor(&stacka, &stackb, 0);
 	if (check_sort(stacka) == 0)
-		sort_three(&stacka);
+		sort_three(stacka);
 	while (ft_lstsize(stackb))
 		pab(&stacka, &stackb, 'a');
-	ft_lstclear(&stacka, free);
 }

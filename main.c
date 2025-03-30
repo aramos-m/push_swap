@@ -6,11 +6,24 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/02 22:11:42 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/30 21:32:51 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	free_split(char **result)
+{
+	int i;
+
+	i = 0;
+	while (result[i] != 0)
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+}
 
 int	check_error(void)
 {
@@ -49,6 +62,7 @@ t_list	*argv_to_lst(char **argv)
 	{
 		argv2 = ft_split(argv[i], ' ');
 		tmp = fill_stack(argv2);
+		free_split(argv2);
 		if (!tmp)
 			return (0);
 		if (!a)
@@ -73,7 +87,6 @@ int	main(int argc, char **argv)
 		sort_to_five(a, NULL);
 	else
 	{
-		a = sort_more_five(a);
 		radix(a, NULL, ft_lstsize(a));
 	}
 }

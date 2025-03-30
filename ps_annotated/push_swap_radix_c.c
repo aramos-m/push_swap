@@ -6,12 +6,13 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:14:51 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/30 21:47:58 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:15:22 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Crea una nueva lista con la posición de cada valor de la lista original
 t_list	*sort_more_five(t_list *num)
 {
 	t_list	*fixed;
@@ -38,6 +39,7 @@ t_list	*sort_more_five(t_list *num)
 	return (new_lst);
 }
 
+// Comprobar cada cifra con su equivalencia en binario para separarlo en dos stacks 0 y 1
 void	radix(t_list *a, t_list *b, int size)
 {
 	int	index;

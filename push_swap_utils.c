@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:20:53 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/02/23 20:25:36 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/03/30 21:15:01 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ t_list	*prev_node(t_list *head, t_list *node)
 
 int	check_sort(t_list *a)
 {
-	while (a->next) // Para que no compruebe el a->next del último
+	while (a->next)
 	{
 		if ((*(int *)(a->content)) > (*(int *)(a->next->content)))
-			return (0); // Not sorted
+			return (0);
 		a = a->next;
 	}
-	return (1); // Sorted 
+	return (1);
 }
 
 void	rrab(t_list **stack, char ab)
