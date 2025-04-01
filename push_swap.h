@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 20:07:39 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/30 21:47:55 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/01 21:52:33 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	rrr(t_list **stacka, t_list **stackb);
 // PUSH_SWAP_UTILS
 t_list	*prev_node(t_list *head, t_list *node);
 int		check_sort(t_list *a);
+void	trim_str(char *argv2);
 
 #endif

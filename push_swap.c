@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/30 21:47:58 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/01 22:09:12 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_list	*fill_stack(char **arg)
 			return (NULL);
 		}
 		*val = ft_atoi(arg[i]);
-		if ((ft_strlen(arg[i]) != num_len(*val)) || ft_isdigit(arg[i][0]) == 0)
+		if ((ft_strlen(arg[i]) != num_len(*val))
+			|| (ft_isdigit(arg[i][0]) == 0 && arg[i][0] != '-'))
 			return (NULL);
 		if (i == 0)
 			head = ft_lstnew(val);

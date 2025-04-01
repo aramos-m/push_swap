@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/30 21:32:51 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/01 22:07:49 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_split(char **result)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (result[i] != 0)
@@ -53,6 +53,7 @@ t_list	*argv_to_lst(char **argv)
 {
 	char	**argv2;
 	int		i;
+	int		j;
 	t_list	*tmp;
 	t_list	*a;
 
@@ -60,7 +61,10 @@ t_list	*argv_to_lst(char **argv)
 	a = 0;
 	while (argv[i])
 	{
-		argv2 = ft_split(argv[i], ' ');
+		j = 0;
+		argv2 = ft_split(argv[i++], ' ');
+		while (argv2[j])
+			trim_str(argv2[j++]);
 		tmp = fill_stack(argv2);
 		free_split(argv2);
 		if (!tmp)
@@ -69,7 +73,6 @@ t_list	*argv_to_lst(char **argv)
 			a = tmp;
 		else
 			ft_lstlast(a)->next = tmp;
-		i++;
 	}
 	return (a);
 }

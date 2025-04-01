@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:20:53 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/03/30 21:15:01 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/01 22:08:45 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,32 @@ int	check_sort(t_list *a)
 		a = a->next;
 	}
 	return (1);
+}
+
+void	trim_str(char *argv2)
+{
+	int	tmp;
+	int	i;
+	int	j;
+
+	tmp = 0;
+	i = 0;
+	j = 0;
+	if (argv2[i] == '-')
+		tmp = ++i;
+	else if (argv2[i] == '+')
+		i++;
+	while (argv2[i] == '0')
+		i++;
+	if (argv2[i] == '\0')
+		argv2 = "0";
+	else
+	{
+		j = tmp;
+		while (argv2[i] != '\0')
+			argv2[j++] = argv2[i++];
+		argv2[j] = '\0';
+	}
 }
 
 void	rrab(t_list **stack, char ab)
