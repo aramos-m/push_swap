@@ -8,7 +8,7 @@ OBJS		= $(SRCS:.c=.o)
 BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
 
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -g3
+CFLAGS	= -Wall -Werror -Wextra
 AR		= ar rcs
 RM		= rm -f
 

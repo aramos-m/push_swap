@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:20:53 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/04/01 22:08:45 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:41:36 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	trim_str(char *argv2)
 		i++;
 	while (argv2[i] == '0')
 		i++;
-	if (argv2[i] == '\0')
+	if (argv2[i] == '\0' && !(argv2[0] == '-' || argv2[0] == '+'))
 		argv2 = "0";
 	else
 	{
@@ -58,6 +58,8 @@ void	trim_str(char *argv2)
 			argv2[j++] = argv2[i++];
 		argv2[j] = '\0';
 	}
+	if (tmp == i)
+		argv2[0] = '\0';
 }
 
 void	rrab(t_list **stack, char ab)
