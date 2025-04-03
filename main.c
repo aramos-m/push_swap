@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/04/02 22:34:25 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/03 21:13:02 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 		sort_to_five(a, NULL);
 	else
 	{
-		sort_more_five(a);
+		a = sort_more_five(a);
 		radix(a, NULL, ft_lstsize(a));
 	}
 }
