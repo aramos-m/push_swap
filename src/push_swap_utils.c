@@ -6,11 +6,11 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:20:53 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/04/02 21:41:36 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/03 21:39:34 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 t_list	*prev_node(t_list *head, t_list *node)
 {

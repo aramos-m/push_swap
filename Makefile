@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = main.c push_swap_minor.c push_swap_major.c push_swap_moves.c push_swap_utils.c
+SRCS = src/main.c  src/push_swap_minor.c src/push_swap_major.c src/push_swap_moves.c src/push_swap_utils.c
 LIBS = -L ./libft -l ft
 
 OBJS = $(SRCS:.c=.o)

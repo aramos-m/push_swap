@@ -6,11 +6,11 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 21:33:01 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/04/03 21:13:02 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/03 21:39:34 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void	free_split(char **result)
 {

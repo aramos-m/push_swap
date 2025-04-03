@@ -6,11 +6,11 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:21:34 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/04/02 22:09:50 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/03 21:39:34 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	sab(t_list **stack, char ab)
 {
