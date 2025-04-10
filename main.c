@@ -93,4 +93,5 @@ int	main(int argc, char **argv)
 		a = sort_more_five(a);
 		radix(a, NULL, ft_lstsize(a));
 	}
+	return (0);
 }
