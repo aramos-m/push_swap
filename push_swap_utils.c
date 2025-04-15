@@ -34,19 +34,20 @@ int	check_sort(t_list *a)
 	return (1);
 }
 
-void	trim_str(char *argv2)
+void	trim_str(char *argv2, int tmp)
 {
-	int	tmp;
 	int	i;
 	int	j;
 
-	tmp = 0;
 	i = 0;
-	j = 0;
 	if (argv2[i] == '-')
 		tmp = ++i;
 	else if (argv2[i] == '+')
 		i++;
+	if (argv2[i] == '-' || argv2[i] == '+')
+	{
+		return ;
+	}
 	while (argv2[i] == '0')
 		i++;
 	if (argv2[i] == '\0' && !(argv2[0] == '-' || argv2[0] == '+'))

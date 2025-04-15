@@ -12,6 +12,58 @@
 
 #include "push_swap.h"
 
+int	num_len(int num)
+{
+	int	count;
+
+	count = 0;
+	if (num <= 0)
+		count = 1;
+	while (num)
+	{
+		num = num / 10;
+		count ++;
+	}
+	return (count);
+}
+
+t_list	*check_error_tlist(t_list *a)
+{
+	if (a != 0)
+		ft_lstclear(&a, free);
+	write(2, "Error\n", 6);
+	return (0);
+}
+
+t_list	*fill_stack(char **arg)
+{
+	int		*val;
+	int		i;
+	t_list	*head;
+
+	i = 0;
+	head = 0;
+	while (arg[i])
+	{
+		val = malloc(sizeof(int));
+		if (!val)
+			return (check_error_tlist(head));
+		*val = ft_atoi(arg[i]);
+		if ((ft_strlen(arg[i]) != num_len(*val))
+			|| (ft_isdigit(arg[i][0]) == 0 && arg[i][0] != '-'))
+		{
+			free (val);
+			return (check_error_tlist(head));
+		}
+		if (i == 0)
+			head = ft_lstnew(val);
+		else
+			ft_lstadd_back(&head, ft_lstnew(val));
+		i++;
+	}
+	return (head);
+}
+
 t_list	*sort_more_five(t_list *num)
 {
 	t_list	*fixed;
@@ -61,4 +113,5 @@ void	radix(t_list *a, t_list *b, int size)
 			pab(&a, &b, 'a');
 		index++;
 	}
+	ft_lstclear(&a, free);
 }

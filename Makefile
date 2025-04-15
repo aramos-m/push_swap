@@ -6,7 +6,7 @@ LIBS = -L ./libft -l ft
 OBJS = $(SRCS:.c=.o)
 
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g3
 RM		= rm -f
 
 LIBFT = libft/libft.a

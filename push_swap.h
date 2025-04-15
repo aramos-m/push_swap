@@ -36,6 +36,7 @@ void	rrr(t_list **stacka, t_list **stackb);
 // PUSH_SWAP_UTILS
 t_list	*prev_node(t_list *head, t_list *node);
 int		check_sort(t_list *a);
-void	trim_str(char *argv2);
+void	trim_str(char *argv2, int tmp);
+int     check_error(t_list *a);
 
 #endif

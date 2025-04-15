@@ -25,8 +25,10 @@ static void	free_split(char **result)
 	free(result);
 }
 
-int	check_error(void)
+int	check_error(t_list *a)
 {
+	if (a != 0)
+		ft_lstclear(&a, free);
 	write(2, "Error\n", 6);
 	return (0);
 }
@@ -64,11 +66,14 @@ t_list	*argv_to_lst(char **argv)
 		j = 0;
 		argv2 = ft_split(argv[i++], ' ');
 		while (argv2[j])
-			trim_str(argv2[j++]);
+			trim_str(argv2[j++], 0);
 		tmp = fill_stack(argv2);
 		free_split(argv2);
 		if (!tmp)
+		{
+			ft_lstclear(&a, free);
 			return (0);
+		}
 		if (!a)
 			a = tmp;
 		else
@@ -81,11 +86,14 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 
+	a = 0;
 	if (argc == 1)
-		return (check_error());
+		return (check_error(a));
 	a = argv_to_lst(argv);
-	if (!a || check_duplicate(a))
-		return (check_error());
+	if (!a)
+		return (0);
+	if (check_duplicate(a))
+		return (check_error(a));	
 	if (ft_lstsize(a) < 6)
 		sort_to_five(a, NULL);
 	else
