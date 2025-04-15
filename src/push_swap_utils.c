@@ -6,7 +6,7 @@
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:20:53 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/04/03 21:39:34 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:41:36 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,20 @@ int	check_sort(t_list *a)
 	return (1);
 }
 
-void	trim_str(char *argv2)
+void	trim_str(char *argv2, int tmp)
 {
-	int	tmp;
 	int	i;
 	int	j;
 
-	tmp = 0;
 	i = 0;
-	j = 0;
 	if (argv2[i] == '-')
 		tmp = ++i;
 	else if (argv2[i] == '+')
 		i++;
+	if (argv2[i] == '-' || argv2[i] == '+')
+	{
+		return ;
+	}
 	while (argv2[i] == '0')
 		i++;
 	if (argv2[i] == '\0' && !(argv2[0] == '-' || argv2[0] == '+'))

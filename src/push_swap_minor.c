@@ -1,60 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_minor.c                                  :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramos-m <aramos-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:37:55 by aramos-m          #+#    #+#             */
-/*   Updated: 2025/04/03 21:39:34 by aramos-m         ###   ########.fr       */
+/*   Updated: 2025/04/01 22:09:12 by aramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int	num_len(int num)
-{
-	int	count;
-
-	count = 0;
-	if (num <= 0)
-		count = 1;
-	while (num)
-	{
-		num = num / 10;
-		count ++;
-	}
-	return (count);
-}
-
-t_list	*fill_stack(char **arg)
-{
-	int		*val;
-	int		i;
-	t_list	*head;
-
-	i = 0;
-	head = 0;
-	while (arg[i])
-	{
-		val = malloc(sizeof(int));
-		if (!val)
-		{
-			ft_lstclear(&head, free);
-			return (NULL);
-		}
-		*val = ft_atoi(arg[i]);
-		if ((ft_strlen(arg[i]) != num_len(*val))
-			|| (ft_isdigit(arg[i][0]) == 0 && arg[i][0] != '-'))
-			return (NULL);
-		if (i == 0)
-			head = ft_lstnew(val);
-		else
-			ft_lstadd_back(&head, ft_lstnew(val));
-		i++;
-	}
-	return (head);
-}
 
 void	sort_three(t_list **h)
 {
