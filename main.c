@@ -70,10 +70,7 @@ t_list	*argv_to_lst(char **argv)
 		tmp = fill_stack(argv2);
 		free_split(argv2);
 		if (!tmp)
-		{
-			ft_lstclear(&a, free);
-			return (0);
-		}
+			return (check_error_tlist(a));
 		if (!a)
 			a = tmp;
 		else
@@ -93,7 +90,7 @@ int	main(int argc, char **argv)
 	if (!a)
 		return (0);
 	if (check_duplicate(a))
-		return (check_error(a));	
+		return (check_error(a));
 	if (ft_lstsize(a) < 6)
 		sort_to_five(a, NULL);
 	else
