@@ -51,15 +51,12 @@ int	check_duplicate(t_list *stack)
 	return (0);
 }
 
-t_list	*argv_to_lst(char **argv)
+t_list	*argv_to_lst(char **argv, t_list *a, int i)
 {
 	char	**argv2;
-	int		i;
 	int		j;
 	t_list	*tmp;
-	t_list	*a;
 
-	i = 1;
 	a = 0;
 	while (argv[i])
 	{
@@ -70,7 +67,10 @@ t_list	*argv_to_lst(char **argv)
 		tmp = fill_stack(argv2);
 		free_split(argv2);
 		if (!tmp)
-			return (check_error_tlist(a));
+		{
+			ft_lstclear(&a, free);
+			return (0);
+		}
 		if (!a)
 			a = tmp;
 		else
@@ -86,7 +86,7 @@ int	main(int argc, char **argv)
 	a = 0;
 	if (argc == 1)
 		return (check_error(a));
-	a = argv_to_lst(argv);
+	a = argv_to_lst(argv, a, 1);
 	if (!a)
 		return (0);
 	if (check_duplicate(a))
