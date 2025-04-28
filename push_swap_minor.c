@@ -73,11 +73,14 @@ void	move_minor(t_list **stacka, t_list **stackb, int i, int pos)
 void	sort_to_five(t_list *stacka, t_list *stackb)
 {
 	if (check_sort(stacka) == 1)
+	{
+		ft_lstclear(&stacka, free);
 		return ;
-	stackb = 0;
+	}
 	if (ft_lstsize(stacka) == 2)
 	{
 		sab(&stacka, 'a');
+		ft_lstclear(&stacka, free);
 		return ;
 	}
 	while (ft_lstsize(stacka) > 3)
