@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void	free_split(char **result)
 {
@@ -51,13 +51,13 @@ int	check_duplicate(t_list *stack)
 	return (0);
 }
 
-t_list	*argv_to_lst(char **argv, t_list *a, int i)
+t_list	*argv_to_lst(char **argv, t_list *stacka, int i)
 {
 	char	**argv2;
 	int		j;
 	t_list	*tmp;
 
-	a = 0;
+	stacka = 0;
 	while (argv[i])
 	{
 		j = 0;
@@ -68,35 +68,35 @@ t_list	*argv_to_lst(char **argv, t_list *a, int i)
 		free_split(argv2);
 		if (!tmp)
 		{
-			ft_lstclear(&a, free);
+			ft_lstclear(&stacka, free);
 			return (0);
 		}
-		if (!a)
-			a = tmp;
+		if (!stacka)
+			stacka = tmp;
 		else
-			ft_lstlast(a)->next = tmp;
+			ft_lstlast(stacka)->next = tmp;
 	}
-	return (a);
+	return (stacka);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list	*a;
+	t_list	*stacka;
 
-	a = 0;
+	stacka = 0;
 	if (argc == 1)
-		return (check_error(a));
-	a = argv_to_lst(argv, a, 1);
-	if (!a)
 		return (0);
-	if (check_duplicate(a))
-		return (check_error(a));
-	if (ft_lstsize(a) < 6)
-		sort_to_five(a, NULL);
+	stacka = argv_to_lst(argv, stacka, 1);
+	if (!stacka)
+		return (0);
+	if (check_duplicate(stacka))
+		return (check_error(stacka));
+	if (ft_lstsize(stacka) < 6)
+		sort_to_five(stacka, NULL);
 	else
 	{
-		a = sort_more_five(a);
-		radix(a, NULL, ft_lstsize(a));
+		stacka = sort_more_five(stacka);
+		radix(stacka, NULL, ft_lstsize(stacka));
 	}
 	return (0);
 }
